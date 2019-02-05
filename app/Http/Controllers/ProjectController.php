@@ -38,7 +38,10 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         Project::create($request->validate(
-            ['title' => 'required', 'description' => 'required']
+            [
+                'title' => 'required',
+                'description' => 'required',
+            ]
         ));
 
         return redirect('/projects');
@@ -53,6 +56,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        return view('projects.show', compact('project'));
     }
 
     /**
